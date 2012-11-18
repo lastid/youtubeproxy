@@ -1,0 +1,23 @@
+{
+  "name": "YouTube proxy",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "Use a proxy for youtube videos.",
+  
+  "icons":{
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  
+  "background": {
+    "scripts": ["js/YP.js", "js/config.js", "js/background.js"]
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["js/YP.js", "js/config.js", "js/content_script.js"]
+    }
+  ]  
+}
