@@ -1,8 +1,10 @@
 {
-  "name": "YouTube proxy",
+  "name": "Proxy link for YouTube™",
   "manifest_version": 2,
-  "version": "1.0",
+  "version": "1.0.3",
   "description": "Use a proxy for youtube videos.",
+  
+  "minimum_chrome_version": "20",
   
   "icons":{
     "16": "img/icon16.png",
