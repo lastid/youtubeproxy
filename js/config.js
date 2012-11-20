@@ -5,12 +5,18 @@ var Config = {
 	    {
 	    	tag: 'img',
 	    	attribute: 'src',
-	    	pattern: '[A-Za-z0-9]+\.ytimg\.com/vi/([A-Za-z0-9-_]+)/' //http://i3.ytimg.com/vi/JoVQTPbD6UY/default.jpg
+	    	pattern: '[A-Za-z0-9]+\.ytimg\.com(?:/|%2F)vi(?:/|%2F)([A-Za-z0-9-_]+)(?:/|%2F)'
+	    	//On youtube
+	    	//http://i3.ytimg.com/vi/JoVQTPbD6UY/default.jpg
+	    	//On facebook
+	    	//https://fbexternal-a.akamaihd.net/safe_image.php?d=AQCmNnEhwEBgBtGk&url=http%3A%2F%2Fi3.ytimg.com%2Fvi%2Fz-j_ah0OZes%2Fmqdefault.jpg&jq=100	
 	    }, 
 	    {
 	    	tag: 'object',
 	    	attribute: 'data',
-	    	pattern: '\.youtube\.com/v/([A-Za-z0-9-_]+)?' //http://www.youtube.com/v/WFxpPUgF5UQ?enablejsapi=1&playerapiid=ytplayer
+	    	pattern: '\.youtube\.com/v/([A-Za-z0-9-_]+)?'
+	    	//On yakaz
+	    	//http://www.youtube.com/v/WFxpPUgF5UQ?enablejsapi=1&playerapiid=ytplayer
 	    },
 	    {
 	    	tag: 'iframe',
@@ -25,7 +31,7 @@ var Config = {
 	    		pattern: 's\.ytimg\.com/' //http://s.ytimg.com/yts/swfbin/watch_as3-vfle2krMl.swf
 	    	},
 	    	attribute: 'flashvars',
-	    	pattern: '(?:&|%26)video_id(?:=|%3D)([A-Za-z0-9-_]+)(?:&|%26)', //video on youtube website
+	    	pattern: '(?:&|%26|^)video_id(?:=|%3D)([A-Za-z0-9-_]+)(?:&|%26|$)', //video on youtube website
 	    	displayOutside: true
 	    }
 	],
