@@ -33,6 +33,12 @@ var Config = {
 	    	attribute: 'flashvars',
 	    	pattern: '(?:&|%26|^)video_id(?:=|%3D)([A-Za-z0-9-_]+)(?:&|%26|$)', //video on youtube website
 	    	displayOutside: true
+	    },
+	    {
+	    	tag: 'video',
+	    	attribute: 'data-youtube-id',
+	    	pattern: '([A-Za-z0-9-_]+)',
+	    	displayOutside: true
 	    }
 	],
 	
