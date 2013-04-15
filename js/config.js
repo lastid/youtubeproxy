@@ -43,7 +43,7 @@ var Config = {
 	PROXIES: {
 		proxfree: {
 			method: 'POST',
-			action: 'http://eu.proxfree.com/request.php?do=go',
+			action: 'http://fr.proxfree.com/request.php?do=go',
 			urlField: 'get',
 			defaultParams: {}
 		}
