@@ -3,7 +3,7 @@ var proxy = YP.getCurrentProxy(),
 	url = YP.getYoutubeUrl(videoId);
 
 var form = document.createElement('form');
-form.action = proxy.action;
+form.action = proxy.action.replace('{subdomain}', localStorage.getItem(Config.STORAGE_KEY) || proxy.defaultSubdomain);
 form.method = proxy.method;
 
 var fieldsHtml = '<input value="' + url+ '" name="' + proxy.urlField +'" type="hidden" />';

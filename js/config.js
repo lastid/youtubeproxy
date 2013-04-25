@@ -1,6 +1,18 @@
 var Config = {
-	ID: 'youtubeProxy',
-	
+	ID: 'youtubeProxy_42',
+
+	/**
+	 * Here is the list of patterns allowing this extension to detect youtube videos.
+	 *
+	 * If you find a new pattern that works for you, I'll appreciate if you share it
+	 * on github (https://github.com/lastid/youtubeproxy),
+	 * or write a feed back on webstore (https://chrome.google.com/webstore/detail/proxy-link-for-youtube/hpccpcaielehgefaagocjkkgkafaabdp/reviews)
+	 * I will update this extension so everyone can benefit from it.
+	 *
+	 * How it works:
+	 * The extension will check the element where the mouse is. If the element's tag satifies
+	 * the declared tag, and the attribute matches the declared pattern, a link will show up.
+	 */
 	OVER_PATTERNS: [
 	    {
 	    	tag: 'img',
@@ -41,21 +53,30 @@ var Config = {
 	    	displayOutside: true
 	    }
 	],
-	
+
+	/**
+	 * Youtube url template
+	 */
 	YOUTUBE_URL: 'http://www.youtube.com/watch?v={id}',
-	
+
+	STORAGE_KEY: 'storageKey',
+
 	DEFAULT_PROXY: 'proxfree',
-	
+
 	PROXIES: {
 		proxfree: {
 			method: 'POST',
-			action: 'http://fr.proxfree.com/request.php?do=go',
+			action: 'https://{subdomain}.proxfree.com/request.php?do=go',
 			urlField: 'get',
-			defaultParams: {}
+			defaultParams: {},
+			defaultSubdomain: 'fr'
 		}
 	},
-	
-	LINK_STYLE: 'z-index:1000000;cursor:pointer;text-shadow:black 1px 0px 2px;border-radius:3px;position:absolute;height:20px;padding:3px;background:rgba(255, 122, 50, 0.7);color:white;',
-	
+
+	LINK_STYLE: 'z-index:1000000;cursor:pointer;text-shadow:black 1px 0px 2px;position:absolute;height:20px;padding:3px;border-raius:3px;background:rgba(255, 122, 50, 0.7);color:white;font-size:13px;',
+
+	/**
+	 * Text to display on current page as a link
+	 */
 	INJECT_CONTENT: 'Use proxy'
 };

@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Proxy link for youtube Options</title>
+<style type="text/css">
+  #textContainer pre{
+    width: 90%;
+    overflow: auto;
+    background-color: #f7f7f7;
+    padding: 10px;
+  }
+
+  #subdomainInput{
+    width: 2em;
+  }
+</style>
+</head>
+<body>
+
+	<h2>Don't modify anything if you don't know what you are doing!</h2>
+
+	<p>If something goes wrong or you need a feature. Request it on github
+	   <a href="https://github.com/lastid/youtubeproxy" target="_blank">https://github.com/lastid/youtubeproxy</a>
+	   or on <a target="_blank" href="https://chrome.google.com/webstore/detail/proxy-link-for-youtube/hpccpcaielehgefaagocjkkgkafaabdp/reviews">the chrome webstore</a>.
+	</p>
+
+  <fieldset>
+    <legend><b>Change proxyfree subdomain</b></legend>
+    <div>The list of supported domains can be found at <a target="_blank" href="https://www.proxfree.com/">proxyfree</a>, under the server location options.</div><br/>
+    
+    <div><span id="protocol"></span>//<input id="subdomainInput" maxlength="2"/><span id="proxyfreeLink"></span></div>
+    <button id="btnSave">Save</button> <button id="btnReset">Reset</button>
+  </fieldset>
+  
+  <p><a href="#" id="viewConfigLink">View the original config file. (Your change is saved in local storage, not in this file.)</a></p>
+	<div id="textContainer"></div>
+
+  <script src="js/config.js"></script>
+ 	<script src="js/options.js"></script>
+</body>
+</html>

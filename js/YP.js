@@ -28,7 +28,7 @@ var YP = {
 				
 				attributeValue = element.getAttribute(cfg.attribute) || '';
 				match = attributeValue.match(cfg.pattern);
-				if(tagName == 'a') console.log(attributeValue);
+
 				if(match){
 					return [match[1], cfg.displayOutside];
 				}	
