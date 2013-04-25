@@ -37,7 +37,11 @@
 			chrome.extension.sendMessage(null, {action: 'openVideo', id: this.getAttribute('data-id')});
 		}
 	};
-	
+
+	var timeoutHideFn = function(){
+		timeoutHide = setTimeout(hide, 200);
+	};
+
 	var createLink = function(){
 		var el = document.createElement('div');
 		
@@ -47,7 +51,9 @@
 		el.addEventListener('mouseover', function(){
 			clearTimeout(timeoutHide);
 		});
-		el.addEventListener('mouseout', hide);
+		el.addEventListener('mouseout', function(e){
+			timeoutHideFn();
+		});
 		el.addEventListener('click', onClick);
 		body.appendChild(el);
 		return el;
@@ -88,7 +94,7 @@
 	
 	body.addEventListener('mouseout', function(e){
 		if(e.target[Config.ID] == true){
-			timeoutHide = setTimeout(hide, 200);
+			timeoutHideFn();
 		}
 	}, false);
 }();
