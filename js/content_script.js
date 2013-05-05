@@ -18,7 +18,14 @@
 				top  += current.offsetTop;
 			} while (current = current.offsetParent);
 		}
-		
+
+		//Reddit companion have a toolbar on top, which add a margin top to the html tag
+		//the offsetParent test cannot go further than the body tag, so we need to 
+		//manually add it here.
+		if(document.documentElement.offsetTop){
+			top += document.documentElement.offsetTop;
+		}
+
 		//sometime the image element is wrapped in a div, and the former is cropped 
 		//because of the latter's height
 		if(getStyle(el, 'position') == 'absolute' && getStyle(parent, 'position') == 'relative'
