@@ -12,9 +12,34 @@ var openVideo = function(id){
 	}
 };
 
+var onNewUrl = function(tabId, changeInfo, tab){
+	var addressBarBehavior = YP.getAddressBarBehavior(),
+		matches,
+		videoId;
+
+	if(addressBarBehavior != 'none'){
+		matches = tab.url.match(Config.ADDRESS_BAR_PATTERN);
+
+		if(matches){
+			videoId = matches[1];
+			if(addressBarBehavior == 'icon'){
+				chrome.pageAction.show(tabId);
+			}else if(addressBarBehavior == 'open'){
+				chrome.tabs.update(tabId, {url: 'opener.html?id=' + videoId});
+			}
+		}
+	}
+};
+
 chrome.extension.onMessage.addListener(function(message){
 	switch(message.action){
 		case 'openVideo'      : openVideo(message.id);break;
 		case 'openOptionsPage': chrome.tabs.create({url: "options.html"});break;
 	}
+});
+
+chrome.tabs.onUpdated.addListener(onNewUrl);
+
+chrome.pageAction.onClicked.addListener(function(tab){
+	chrome.tabs.update(tab.id, {url: 'opener.html?url=' + tab.url});
 });

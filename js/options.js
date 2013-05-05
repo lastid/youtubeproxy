@@ -29,20 +29,36 @@ getById('viewConfigLink').onclick = function(){
 	}
 };
 
+/*** Subdomain config  ***/
 var link           = document.createElement('a'),
 	subdomainInput = getById('subdomainInput');
 
 link.href = Config.PROXIES.proxfree.action;
 
 getById('protocol').innerHTML = link.protocol;
-subdomainInput.value = localStorage.getItem(STORE_KEY) || Config.PROXIES.proxfree.defaultSubdomain;
+subdomainInput.value = YP.getProxfreeSubdomain();
 getById('proxyfreeLink').innerHTML = unescape(link.hostname).replace('{subdomain}', '');
 
 getById('btnSave').onclick = function(){
-	localStorage.setItem(STORE_KEY, subdomainInput.value);
+	YP.saveProxfreeSubdomain(subdomainInput.value);
 };
 
 getById('btnReset').onclick = function(){
-	localStorage.removeItem(STORE_KEY);
+	YP.saveProxfreeSubdomain(null);
 	subdomainInput.value = Config.PROXIES.proxfree.defaultSubdomain;
 };
+
+/*** Address bar behavior ***/
+var radioBtns = document.querySelectorAll('input[name="detectedInAddressBar"]'),
+	behavior  = YP.getAddressBarBehavior(),
+	radioBtn;
+
+for(var i = 0; i < radioBtns.length; i++){
+	radioBtn = radioBtns[i];
+	if(radioBtn.value == behavior){
+		radioBtn.checked = true;
+	}
+	radioBtn.onchange = function(){
+		YP.saveAddressBarBehavior(this.value);
+	};
+}

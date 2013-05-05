@@ -55,6 +55,11 @@ var Config = {
 	],
 
 	/**
+	 * Pattern to check the url in the address bar in order to open it using a proxy
+	 */
+	ADDRESS_BAR_PATTERN: '^(?:http|https)://www.youtube.com/watch\?(?:.*)v=([A-Za-z0-9-_]+)',
+
+	/**
 	 * Youtube url template
 	 */
 	YOUTUBE_URL: 'http://www.youtube.com/watch?v={id}',
@@ -66,7 +71,7 @@ var Config = {
 	PROXIES: {
 		proxfree: {
 			method: 'POST',
-			action: 'https://{subdomain}.proxfree.com/request.php?do=go',
+			action: 'http://{subdomain}.proxfree.com/request.php?do=go',
 			urlField: 'get',
 			defaultParams: {},
 			defaultSubdomain: 'fr'

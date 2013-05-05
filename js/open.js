@@ -1,14 +1,27 @@
 var proxy = YP.getCurrentProxy(),
-	videoId = window.location.href.match('id=(.*)')[1],
-	url = YP.getYoutubeUrl(videoId);
+	i,
+	form,
+	fieldsHtml,
+	matches,
+	videoId,
+	url;
 
-var form = document.createElement('form');
-form.action = proxy.action.replace('{subdomain}', localStorage.getItem(Config.STORAGE_KEY) || proxy.defaultSubdomain);
+matches = window.location.href.match('url=(.*)');
+if(matches){
+	url = matches[1];
+}else{
+	videoId =  window.location.href.match('id=(.*)')[1];
+	url = YP.getYoutubeUrl(videoId); 
+}
+
+form = document.createElement('form');
+//Should make proxy service agnostic here, the following line only workds with proxfree
+form.action = proxy.action.replace('{subdomain}', YP.getProxfreeSubdomain());
 form.method = proxy.method;
 
-var fieldsHtml = '<input value="' + url+ '" name="' + proxy.urlField +'" type="hidden" />';
+fieldsHtml = '<input value="' + url+ '" name="' + proxy.urlField +'" type="hidden" />';
 
-for(var i in proxy.defaultParams){
+for(i in proxy.defaultParams){
 	fieldsHtml += '<input value="' + proxy.defaultParams[i]+ '" name="' + i +'" type="hidden" />';
 }
 

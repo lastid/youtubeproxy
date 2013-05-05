@@ -18,7 +18,7 @@
 
 	<h2>Don't modify anything if you don't know what you are doing!</h2>
 
-	<p>If something goes wrong or you need a feature. Request it on github
+	<p>If something goes wrong or you need a feature, request it on github
 	   <a href="https://github.com/lastid/youtubeproxy" target="_blank">https://github.com/lastid/youtubeproxy</a>
 	   or on <a target="_blank" href="https://chrome.google.com/webstore/detail/proxy-link-for-youtube/hpccpcaielehgefaagocjkkgkafaabdp/reviews">the chrome webstore</a>.
 	</p>
@@ -30,11 +30,22 @@
     <div><span id="protocol"></span>//<input id="subdomainInput" maxlength="2"/><span id="proxyfreeLink"></span></div>
     <button id="btnSave">Save</button> <button id="btnReset">Reset</button>
   </fieldset>
+  <br/>
+
+  <fieldset>
+    <legend><b>When a youtube video is detected on the address bar</b></legend>
+
+    <div><label><input type="radio" name="detectedInAddressBar" value="none" checked/>Do nothing</label></div>
+    <div><label><input type="radio" name="detectedInAddressBar" value="icon"/>Display an icon to use a proxy</label></div>
+    <div><label><input type="radio" name="detectedInAddressBar" value="open"/>Automatically open this video using a proxy</label></div>
+    
+  </fieldset>
   
   <p><a href="#" id="viewConfigLink">View the original config file. (Your change is saved in local storage, not in this file.)</a></p>
 	<div id="textContainer"></div>
 
   <script src="js/config.js"></script>
+  <script src="js/YP.js"></script>
  	<script src="js/options.js"></script>
 </body>
 </html>
