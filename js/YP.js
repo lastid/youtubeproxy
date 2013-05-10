@@ -71,7 +71,7 @@ var YP = {
 	},
 
 	getAddressBarBehavior: function(){
-		return YP.getSavedOptions().addressBarBehavior || 'none';
+		return YP.getSavedOptions().addressBarBehavior || 'icon';
 	},
 
 	saveAddressBarBehavior: function(value){
